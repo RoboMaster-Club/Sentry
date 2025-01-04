@@ -110,7 +110,7 @@ void Calc_Feeding()
             break;
         case (BURST):
             break;
-        case (FULL_AUTO):
+        case (FULL_AUTO): ;
             float feed_motor_velo = LAUNCH_FREQUENCY / FEED_HOLE_NUM * 60.0f; // TODO: might be wrong, copy pasted from swerve
             DJI_Motor_Set_Control_Mode(g_feed_motor, VELOCITY_CONTROL);
             DJI_Motor_Set_Velocity(g_feed_motor, feed_motor_velo);
