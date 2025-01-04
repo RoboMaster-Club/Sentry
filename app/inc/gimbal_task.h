@@ -1,11 +1,28 @@
 #ifndef GIMBAL_TASK_H
 #define GIMBAL_TASK_H
 
-#define YAW_MID_POSITION
-#define PITCH_MID_POSITION
+// TODO: Find correct values
 
-#define PITCH_VELOCITY_SCALE (0.01f)
-#define YAW_VELOCITY_SCALE (0.01f)
+// Note: these values are in degrees so that they are human-readable
+
+#define PITCH_LOWER_LIMIT (0.0f)
+#define PITCH_UPPER_LIMIT (45.0f)
+
+#define PITCH_OFFSET (0.0f)
+#define YAW_OFFSET (0.0f)
+
+#define PITCH_CONTROLLER_VELOCITY_COEF (1e-6f)
+#define YAW_CONTORLLER_VELOCITY_COEF (5e-5f)
+
+#define PITCH_MOUSE_VELOCITY_COEF (5e-5f)
+#define YAW_MOUSE_VELOCITY_COEF (1e-5f)
+
+// TODO: Find correct values
+
+// Degrees per second
+
+#define PITCH_RATE_LIMIT (1.0f)
+#define YAW_RATE_LIMIT (1.0f)
 
 typedef struct
 {

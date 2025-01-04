@@ -98,7 +98,15 @@ void Handle_Disabled_State()
 
 void Process_Remote_Input()
 {
-    // USER CODE HERE
+    // Gimbal control
+    g_robot_state.gimbal.yaw_angle -= (
+        g_remote.controller.right_stick.x * YAW_CONTORLLER_VELOCITY_COEF +
+        g_remote.mouse.x * YAW_MOUSE_VELOCITY_COEF
+    );
+    g_robot_state.gimbal.pitch_angle -= (
+        g_remote.controller.right_stick.y * PITCH_CONTROLLER_VELOCITY_COEF - 
+        g_remote.mouse.y * PITCH_MOUSE_VELOCITY_COEF
+    );
 }
 
 void Process_Chassis_Control()
