@@ -3,5 +3,6 @@
 
 void Launch_Task_Init(void);
 void Launch_Ctrl_Loop(void);
+void Launch_Speed_Test(void);
 
 #endif // LAUNCH_TASK_H
