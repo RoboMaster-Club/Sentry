@@ -39,7 +39,8 @@ typedef enum Fire_Mode_e
 {
   SINGLE_FIRE,
   BURST,
-  FULL_AUTO
+  FULL_AUTO,
+  NO_FIRE_MODE_SELECTED
 } Fire_Mode_e;
 
 typedef struct
@@ -49,6 +50,8 @@ typedef struct
   uint8_t IS_FLYWHEEL_ENABLED;
 
   Fire_Mode_e fire_mode;
+  uint8_t single_launch_finished_flag;
+  float feed_angle;
 } Launch_State_t;
 
 typedef struct

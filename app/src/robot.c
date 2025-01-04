@@ -112,8 +112,19 @@ void Process_Gimbal_Control()
 }
 
 void Process_Launch_Control()
-{
-     // USER CODE HERE
+{ // TODO: figure out what controls map to what firing mode, this is copied from swerve
+    if (g_remote.controller.wheel < -50.0f) { 
+        g_robot_state.launch.fire_mode = SINGLE_FIRE;
+    } 
+    else if (g_remote.controller.wheel > 50.0f) {
+        g_robot_state.launch.fire_mode = FULL_AUTO;
+    } 
+    else {
+        g_robot_state.launch.fire_mode = NO_FIRE_MODE_SELECTED;
+        g_robot_state.launch.single_launch_finished_flag = 0;
+        g_robot_state.launch.feed_angle = DJI_Motor_Get_Total_Angle(g_feed_motor);
+    }
+    Launch_Ctrl_Loop();
 }
 
 /**
