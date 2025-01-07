@@ -16,6 +16,8 @@ Robot_State_t g_robot_state = {0};
 extern Remote_t g_remote;
 extern Supercap_t g_supercap;
 
+extern DJI_Motor_Handle_t* g_yaw_motor;
+
 /**
  * @brief This function initializes the robot.
  * This means setting the state to STARTING_UP,
@@ -98,6 +100,12 @@ void Handle_Disabled_State()
 
 void Process_Remote_Input()
 {
+
+    // Rotate chassis input for gimbal-oriented control
+    float theta = DJI_Motor_Get_Absolute_Angle(g_yaw_motor);
+    g_robot_state.chassis.x_speed = -g_robot_state.input.vy * sin(theta) + g_robot_state.input.vx * cos(theta);
+    g_robot_state.chassis.y_speed = g_robot_state.input.vy * cos(theta) + g_robot_state.input.vx * sin(theta);
+
     // Gimbal control
     g_robot_state.gimbal.yaw_angle -= (
         g_remote.controller.right_stick.x * YAW_CONTORLLER_VELOCITY_COEF +
