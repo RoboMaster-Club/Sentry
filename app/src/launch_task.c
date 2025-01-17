@@ -40,4 +40,7 @@ void Launch_Task_Init()
 void Launch_Ctrl_Loop()
 {
     // Control loop for launch
+    if(g_robot_state.launch.IS_FLYWHEEL_ENABLED){
+        DJI_Motor_Set_Velocity(motors[0], )
+    }
 }
