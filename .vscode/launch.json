@@ -44,8 +44,13 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
+<<<<<<< HEAD
       "cwd": "c:/Users/0418y/Documents/Code/Sentry/app/src",
       "program": "c:/Users/0418y/Documents/Code/Sentry/app/src/build/Debug/outDebug",
+=======
+      "cwd": "c:/Users/wehne/Documents/RoboMasters/Sentry/app/src",
+      "program": "c:/Users/wehne/Documents/RoboMasters/Sentry/app/src/build/Debug/outDebug",
+>>>>>>> 4fde0c72c0abdce03d7d4025d73a70686863d4bc
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
