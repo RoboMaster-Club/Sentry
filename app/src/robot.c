@@ -111,6 +111,8 @@ void Process_Remote_Input()
     {
         g_robot_state.chassis.IS_SPINTOP_ENABLED = 0;
     }
+
+    g_robot_state.input.prev_left_switch = g_remote.controller.left_switch;
 }
 
 void Process_Chassis_Control()

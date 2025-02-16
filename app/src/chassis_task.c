@@ -76,12 +76,13 @@ void Chassis_Ctrl_Loop()
     if (g_robot_state.chassis.IS_SPINTOP_ENABLED) {
         chassis_state.omega = SPIN_TOP_OMEGA;
     } else {
-        chassis_state.omega = g_robot_state.chassis.omega * MAX_ANGLUAR_SPEED;
+        //chassis_state.omega = g_robot_state.chassis.omega * MAX_ANGLUAR_SPEED;
+        chassis_state.omega = g_robot_state.input.vomega;
     }
     
     chassis_state.v_x = g_robot_state.input.vy; // x and y are swapped due to joytick orientation
     chassis_state.v_y = -g_robot_state.input.vx;
-    chassis_state.omega = g_robot_state.input.vomega;
+    
 
     // Control loop for the chassis
     omni_calculate_kinematics(&chassis_state, &physical_constants);
