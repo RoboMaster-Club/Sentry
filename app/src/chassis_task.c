@@ -12,18 +12,17 @@ extern Remote_t g_remote;
 
 #define CHASSIS_WHEEL_DIAMETER (0.15f) // m
 #define CHASSIS_RADIUS (0.21f) // center to wheel, m
-#define CHASSIS_MAX_SPEED (1.5f) // m/s
+#define CHASSIS_MAX_SPEED (2.0f) // m/s
 #define CHASSIS_MOUNTING_ANGLE (PI / 4) // rad (45deg)
-#define MAX_ABC (1.0f) // rad/s
+#define MAX_ABC (200.0f) // rad/s
 
-float chassis_rad;
 DJI_Motor_Handle_t *motors[4];
 uint8_t drive_esc_id_array[4] = {1, 2, 3, 4};
 Motor_Reversal_t drive_motor_reversal_array[4] = {
-    MOTOR_REVERSAL_NORMAL,
-    MOTOR_REVERSAL_NORMAL,
-    MOTOR_REVERSAL_NORMAL,
-    MOTOR_REVERSAL_NORMAL};
+    MOTOR_REVERSAL_REVERSED,
+    MOTOR_REVERSAL_REVERSED,
+    MOTOR_REVERSAL_REVERSED,
+    MOTOR_REVERSAL_REVERSED};
 
 omni_physical_constants_t physical_constants;
 omni_chassis_state_t chassis_state;
@@ -90,10 +89,10 @@ void Chassis_Ctrl_Loop()
     omni_convert_to_rpm(&chassis_state);
 
     // use rate limiter to limit acceleration of the wheels
-    // chassis_state.phi_dot_1 = rate_limiter(&wheel_rate_limiters[0], chassis_state.phi_dot_1);
-    // chassis_state.phi_dot_2 = rate_limiter(&wheel_rate_limiters[1], chassis_state.phi_dot_2);
-    // chassis_state.phi_dot_3 = rate_limiter(&wheel_rate_limiters[2], chassis_state.phi_dot_3);
-    // chassis_state.phi_dot_4 = rate_limiter(&wheel_rate_limiters[3], chassis_state.phi_dot_4);
+    chassis_state.phi_dot_1 = rate_limiter(&wheel_rate_limiters[0], chassis_state.phi_dot_1);
+    chassis_state.phi_dot_2 = rate_limiter(&wheel_rate_limiters[1], chassis_state.phi_dot_2);
+    chassis_state.phi_dot_3 = rate_limiter(&wheel_rate_limiters[2], chassis_state.phi_dot_3);
+    chassis_state.phi_dot_4 = rate_limiter(&wheel_rate_limiters[3], chassis_state.phi_dot_4);
 
     // set the velocities of the wheels
     DJI_Motor_Set_Velocity(motors[0], chassis_state.phi_dot_1);
