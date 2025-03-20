@@ -1,0 +1,27 @@
+[
+  {
+    "arguments": [
+      "/Applications/ArmGNUToolchain/10.2/bin/arm-none-eabi-gcc",
+      "-c",
+      "-Icontrol-base/typec-board-base/Core/Inc",
+      "-Icontrol-base/typec-board-base/Drivers/STM32F4xx_HAL_Driver/Inc",
+      "-Icontrol-base/typec-board-base/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+      "-Icontrol-base/typec-board-base/Middlewares/Third_Party/FreeRTOS/Source/include",
+      "-Icontrol-base/typec-board-base/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS",
+      "-Icontrol-base/typec-board-base/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
+      "-Icontrol-base/typec-board-base/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+      "-Icontrol-base/typec-board-base/Drivers/CMSIS/Include",
+      "-Icontrol-base/algo/inc",
+      "-Icontrol-base/devices/inc",
+      "-Icontrol-base/bsp/inc",
+      "-Iapp/inc",
+      "-Iui/inc",
+      "-o",
+      "/Users/irving45/Dev/Sentry/build/control-base/typec-board-base/Core/Src/main.o",
+      "/Users/irving45/Dev/Sentry/control-base/typec-board-base/Core/Src/main.c"
+    ],
+    "directory": "/Users/irving45/Dev/Sentry",
+    "file": "/Users/irving45/Dev/Sentry/control-base/typec-board-base/Core/Src/main.c",
+    "output": "/Users/irving45/Dev/Sentry/build/control-base/typec-board-base/Core/Src/main.o"
+  }
+]
